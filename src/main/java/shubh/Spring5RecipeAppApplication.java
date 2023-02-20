@@ -1,4 +1,4 @@
-package shubhspring5recipeapp;
+package shubh;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

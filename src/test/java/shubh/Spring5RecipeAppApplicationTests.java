@@ -1,4 +1,4 @@
-package shubhspring5recipeapp;
+package shubh;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
