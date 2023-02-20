@@ -25,6 +25,9 @@ public class Recipe {
 
     @Lob // it is used of large object storage
     private Byte[] images;
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
     @OneToOne(cascade = CascadeType.ALL) // the cascade will delete the recipe if the notes is deleted
     private Notes notes;
 
@@ -114,5 +117,13 @@ public class Recipe {
 
     public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }
