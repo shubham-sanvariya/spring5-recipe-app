@@ -2,6 +2,7 @@ package shubh.springFramework.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,10 +19,9 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    // TODO: 20-02-2023 private Difficulty difficulty;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob // it is used of large object storage
     private Byte[] images;
