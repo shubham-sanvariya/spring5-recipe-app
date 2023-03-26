@@ -7,6 +7,7 @@ import org.mockito.MockitoAnnotations;
 import shubh.springFramework.commands.IngredientCommand;
 import shubh.springFramework.converters.IngredientCommandToIngredient;
 import shubh.springFramework.converters.IngredientToIngredientCommand;
+import shubh.springFramework.converters.UnitOfMeasureCommandToUnitOfMeasure;
 import shubh.springFramework.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import shubh.springFramework.domain.Ingredient;
 import shubh.springFramework.domain.Recipe;
@@ -33,16 +34,17 @@ public class IngredientServiceImplTest {
     IngredientService ingredientService;
 
     //init converters
-    public IngredientServiceImplTest(IngredientCommandToIngredient ingredientCommandToIngredient) {
-        this.ingredientCommandToIngredient = ingredientCommandToIngredient;
+    public IngredientServiceImplTest() {
         this.ingredientToIngredientCommand = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        this.ingredientCommandToIngredient = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository, ingredientCommandToIngredient, unitOfMeasureRepository);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient,
+                recipeRepository, unitOfMeasureRepository);
     }
 
     @Test
@@ -80,6 +82,7 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
     }
 
+
     @Test
     public void testSaveRecipeCommand() throws Exception {
         //given
@@ -105,5 +108,4 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).save(any(Recipe.class));
 
     }
-
 }
