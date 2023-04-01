@@ -32,7 +32,7 @@ public class ImageServiceImpl implements ImageService {
                 byteObjects[i++] = b;
             }
 
-            recipe.setImages(byteObjects);
+            recipe.setImage(byteObjects);
 
             recipeRepository.save(recipe);
 
