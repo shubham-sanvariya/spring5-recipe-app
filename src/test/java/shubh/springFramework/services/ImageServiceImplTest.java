@@ -51,6 +51,6 @@ public class ImageServiceImplTest {
         //then
         verify(recipeRepository, times(1)).save(argumentCaptor.capture());
         Recipe savedRecipe = argumentCaptor.getValue();
-        assertEquals(multipartFile.getBytes().length, savedRecipe.getImages().length);
+        assertEquals(multipartFile.getBytes().length, savedRecipe.getImage().length);
     }
 }
