@@ -7,6 +7,7 @@ import shubh.springFramework.commands.RecipeCommand;
 import shubh.springFramework.converters.RecipeCommandToRecipe;
 import shubh.springFramework.converters.RecipeToRecipeCommand;
 import shubh.springFramework.domain.Recipe;
+import shubh.springFramework.exceptions.NotFoundException;
 import shubh.springFramework.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -40,7 +41,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()){
-            throw new RuntimeException("Recipe Not Found");
+            throw new NotFoundException("Recipe Not Found");
         }
         return recipeOptional.get();
     }
