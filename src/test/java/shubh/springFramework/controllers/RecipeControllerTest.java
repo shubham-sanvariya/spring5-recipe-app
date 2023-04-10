@@ -54,8 +54,6 @@ public class RecipeControllerTest {
     @Test
     public void testGetRecipeNotFound() throws Exception {
 
-        Recipe recipe = new Recipe();
-        recipe.setId(1L);
 
         when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
 
